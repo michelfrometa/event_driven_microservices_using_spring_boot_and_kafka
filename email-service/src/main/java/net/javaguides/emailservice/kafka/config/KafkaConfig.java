@@ -1,6 +1,6 @@
-package net.javaguides.stockservice.config;
+package net.javaguides.emailservice.kafka.config;
 
-import net.javaguides.stockservice.kafka.events.OrderEvent;
+import net.javaguides.emailservice.kafka.events.OrderEvent;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,10 +23,11 @@ class KafkaConfig {
             @Value("${spring.kafka.bootstrap-servers}") String bootstrapServers
                                                        ) {
 
+        // todo externalize
         String orderEventPackage = OrderEvent.class.getName();
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "stock");
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "email");
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);

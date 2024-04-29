@@ -1,4 +1,4 @@
-package net.javaguides.stockservice.config;
+package net.javaguides.stockservice.kafka.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.Consumer;

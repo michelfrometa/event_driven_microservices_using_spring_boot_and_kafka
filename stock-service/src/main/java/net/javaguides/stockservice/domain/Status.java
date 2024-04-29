@@ -1,4 +1,4 @@
-package net.javaguides.stockservice.kafka;
+package net.javaguides.stockservice.domain;
 
 public enum Status {
     PENDING,

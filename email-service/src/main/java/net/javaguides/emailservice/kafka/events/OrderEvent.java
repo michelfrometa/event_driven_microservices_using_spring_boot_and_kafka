@@ -1,6 +1,4 @@
-package net.javaguides.stockservice.kafka.events;
-
-import net.javaguides.stockservice.domain.Status;
+package net.javaguides.emailservice.kafka.events;
 
 public record OrderEvent(
         String message,
