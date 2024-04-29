@@ -1,4 +1,4 @@
-package net.javaguides.orderservice.config;
+package net.javaguides.orderservice.kafka.config;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Value;
