@@ -22,14 +22,16 @@ class KafkaConfig {
     ConsumerFactory<String, OrderEvent> consumerFactory(
             @Value("${spring.kafka.bootstrap-servers}") String bootstrapServers
                                                        ) {
+
+        String orderEventPackage = OrderEvent.class.getName();
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "stock");
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-        props.put(JsonDeserializer.TRUSTED_PACKAGES, String.format("order:%s", OrderEvent.class.getName()));
-        props.put(JsonDeserializer.TYPE_MAPPINGS, "order:net.javaguides.stockservice.kafka.events.OrderEvent");
+        props.put(JsonDeserializer.TRUSTED_PACKAGES, orderEventPackage);
+        props.put(JsonDeserializer.TYPE_MAPPINGS, String.format("order:%s", orderEventPackage));
         return new DefaultKafkaConsumerFactory<>(
                 props,
                 new StringDeserializer(),
