@@ -2,3 +2,21 @@ server:
   port: 10003
   servlet:
     context-path: /api/v1
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: stock
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*" #todo Verify property
+            type:
+              mapping: order:net.javaguides.stockservice.kafka.events.OrderEvent # todo estudiar estos casos
+    topic:
+      name:
+        order_topics
