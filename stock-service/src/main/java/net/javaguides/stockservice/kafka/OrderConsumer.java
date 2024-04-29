@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class OrderConsumer {
 
-    @KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "${spring.kafka.consumer.group-id}")
+    @KafkaListener(topics = "${spring.kafka.topic.name}")
     public void consume(OrderEvent event) {
         log.info(String.format("Order event receiver in Stock Service => %s", event.toString()));
 
