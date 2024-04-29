@@ -2,7 +2,7 @@ package net.javaguides.orderservice.kafka;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.javaguides.orderservice.domain.OrderEvent;
+import net.javaguides.orderservice.kafka.events.OrderEvent;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
